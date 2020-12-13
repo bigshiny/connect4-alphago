@@ -1,0 +1,371 @@
+body {
+    margin: 0;
+    background-image: url("../img/wooden-boards.jpg");
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: lighten;
+}
+
+div {
+    position: absolute;
+    text-align: center;
+}
+
+@media (orientation:portrait) and (min-aspect-ratio: 2/3)  {
+    #container {
+      width: 66.6666666667vh;
+      height: 100vh;
+      top: 0;
+      left:calc(50vw - 33.3333333333vh);
+    }
+    html {font-size: 2.5vh;}
+}
+
+@media (orientation:portrait) and (max-aspect-ratio: 2/3)  {
+    #container {
+      width: 100vw;
+      height: 150vw;
+      top: 0;
+      left:0;
+    }
+    html {font-size: 3.75vw;}
+}
+
+@media (orientation:landscape) and (min-aspect-ratio: 3/2) {
+    #container {
+      width: 150vh;
+      height: 100vh;
+      top:0;
+      left: calc(50vw - 75vh);
+    }
+    html {font-size: 3.75vh;}
+}
+
+@media (orientation:landscape) and (max-aspect-ratio: 3/2) {
+    #container {
+      width: 100vw;
+      height: 66.6666666667vw;
+      top: 0;
+      left:0;
+    }
+    html {font-size: 2.5vw;}
+}
+
+@media (orientation:portrait) {
+    #nav {
+      left:0%;
+      top:0%;
+      width:100%;
+      height:33.3333333333%;
+    }
+    #board {
+      left:0;
+      top: 33.3333333333%;
+      width: 100%;
+      height: 66.6666666667%;
+    }
+    #title {left:0%;top:0%; width:50%; height:20%;}
+    #player_div {left:50%; top:14.2857%; width:50%; height:40%;}
+    #button_div {
+        left:0%;
+        top:60%;
+        width:50%;
+        height:80%;
+        width: 100%;
+    }
+    #arrow_div {
+        left:0%;
+        top:2%;
+        width:100%;
+        height:10%;
+    }
+}
+
+@media (orientation:landscape) {
+    #nav {
+      left: 0%;
+      top:0%;
+      width: 33.3333333333%;
+      height:100%;
+    }
+    #board {
+      left:33.333333333%;
+      top:0%;
+      width: 66.6666666667%;
+      height: 100%;
+    }
+    #title {left:0%; top:3%; width:100%; height:10%;}
+    #player_div {left:0%; top:14.2857%; width:100%; height:20%;}
+    #button_div {
+        left:0%;
+        top:35%;
+        width:100%;
+        height:40%;
+    }
+    #arrow_div {
+        left:0%;
+        top:2%;
+        width:100%;
+        height:10%;
+    }
+}
+
+#player1 {
+    top:0%;
+    background-image:url(../img/yellowChip.png);
+    background-size: 5em 5em;
+    background-repeat: no-repeat;
+    background-position:left center;
+}
+#player2 {
+    top:65%;
+    background-image:url(../img/redChip.png);
+    background-size: 5em 5em;
+    background-repeat: no-repeat;
+    background-position:left center;
+}
+
+.button_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.btn,
+a.btn,
+button.btn {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 1rem 4rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+}
+
+/*reset and back button*/
+a.btn--navy {
+    font-size: 3.0rem;
+    text-align: center;
+    color: #fff;
+    background-color: #174E8F;
+}
+
+a.btn--navy:hover {
+    color: #fff;
+    background: #2C76BD;
+}
+
+a.btn--shadow {
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+a.btn--circle {
+    border-radius: 50%;
+    line-height: 100px;
+    width: 130px;
+    height: 130px;
+    line-height: 130px;
+    padding: 0;
+}
+
+/*circle button(↓) in board header*/
+a.btn-rounded {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    padding: 25px 0;
+    border-radius: 50%;
+    background: #fcfff4;
+    background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#fcfff4),
+    color-stop(40%, #dfe5d7),
+    to(#b3bead)
+    );
+    background: -webkit-linear-gradient(
+    top,
+    #fcfff4 0%,
+    #dfe5d7 40%,
+    #b3bead 100%
+    );
+    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    -webkit-box-shadow: inset 5px 30px 20px rgba(255, 255, 255, 0.5),
+    0 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 5px 30px 20px rgba(255, 255, 255, 0.5),
+    0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+a.btn-rounded i {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+a.btn-rounded:hover {
+  -webkit-box-shadow: inset 15px 30px 40px rgba(255, 255, 255, 0.55),
+    0 3px 7px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 15px 30px 40px rgba(255, 255, 255, 0.55),
+    0 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+a.btn-rounded:hover i {
+  bottom: 6px;
+}
+
+.fa-position-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: calc(50% - 0.5rem);
+}
+
+.player {
+    padding: 2.2rem 4.5rem;
+    margin: 0em 2.0em 2.0em;
+    background: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.you {
+    color: #5d627b;
+    border-left: solid 10px #5d627b;
+}
+.ai {
+    color: #cedb00;
+    border-left: solid 10px #cedb00;
+}
+.active {
+    opacity: 1;
+}
+.inactive {
+    opacity: 0.50;
+    border-color: #ffffff;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 62.5%;  /*rem算出をしやすくするために*/
+}
+h1 {
+    font-size: 550%;
+    font-weight: bold;
+    margin: 0;
+}
+p {
+    font-size: 350%;
+    font-weight: bold;
+    margin: 0;
+}
+
+.board {
+    background-image:url(../img/masked_boards.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height:14.285714286%;
+    width:14.285714286%;
+    z-index:2;
+    opacity:0.7;
+}
+
+<!--  .win {-->
+<!--    background-image:url(/win.png);-->
+<!--    width:14.285714286%;-->
+<!--    height:14.285714286%;-->
+<!--    background-size: 100% 100%;-->
+<!--    background-repeat: no-repeat;-->
+<!--    z-index:1;-->
+<!--  }-->
+
+.player1 {
+    background-image:url(../img/yellowChip.png);
+    width:14.285714286%;
+    height:14.285714286%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index:1;
+}
+.player2 {
+    background-image:url(../img/redChip.png);
+    width:14.285714286%;
+    height:14.285714286%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index:1;
+}
+
+.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: .6s;
+}
+.popup.is-show {
+    opacity: 1;
+    visibility: visible;
+}
+.popup-inner {
+    font-size: 3rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    max-width: 600px;
+    padding: 50px;
+    background-color: #fff;
+    z-index: 2;
+}
+.popup-inner img {
+    width: 100%;
+}
+.close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.close-btn i {
+    font-size: 20px;
+    color: #333;
+}
+.black-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.8);
+    z-index: 1;
+    cursor: pointer;
+}

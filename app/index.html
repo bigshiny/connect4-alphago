@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/4d0402d706.js" crossorigin="anonymous"></script>
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <script type="module">import * as app from './__target__/app.js'; window.app = app;</script>
+  <script type="text/javascript" src="./js/game.js"></script>
+</head>
+<body>
+
+<div class="popup" id="js-popup">
+  <div class="popup-inner">
+    <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
+    the match has finished!!
+    <img src="../img/finished.jpg" alt="popup image">
+  </div>
+  <div class="black-background" id="js-black-bg"></div>
+</div>
+
+<div id="container">
+  <div id="nav" class="ui-widget">
+    <div id="title">
+      <h1>
+        <font color="#FCBC04">C</font>onnect&nbsp;<font color="#EA4235">4</font>
+      </h1>
+    </div>
+    <div id="player_div">
+      <div id="player1" class="player you active"><p>player1</p></div>
+      <div id="player2" class="player ai inactive"><p>player2</p></div>
+    </div>
+    <div id="button_div" class="button_wrapper">
+      <a href="javascript:reset()" class="btn btn--navy btn--circle btn--circle-a btn--shadow">reset</a>
+      <a href="javascript:back()" class="btn btn--navy btn--circle btn--circle-a btn--shadow">back</a>
+    </div>
+  </div>
+
+  <div id="board">
+    <div id="arrow_div" class="button_wrapper">
+      <a href="javascript:dropPiece(0)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+      <a href="javascript:dropPiece(1)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+      <a href="javascript:dropPiece(2)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+      <a href="javascript:dropPiece(3)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+      <a href="javascript:dropPiece(4)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+      <a href="javascript:dropPiece(5)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+      <a href="javascript:dropPiece(6)" class="btn btn-rounded">
+        PUSH
+        <i class="fas fa-angle-down fa-position-bottom"></i>
+      </a>
+    </div>
+    <div class="board" style="left: 0%; top: 85.7143%;"></div>
+    <div class="board" style="left: 0%; top: 71.4286%;"></div>
+    <div class="board" style="left: 0%; top: 57.1429%;"></div>
+    <div class="board" style="left: 0%; top: 42.8571%;"></div>
+    <div class="board" style="left: 0%; top: 28.5714%;"></div>
+    <div class="board" style="left: 0%; top: 14.2857%;"></div>
+    <div class="board" style="left: 14.2857%; top: 85.7143%;"></div>
+    <div class="board" style="left: 14.2857%; top: 71.4286%;"></div>
+    <div class="board" style="left: 14.2857%; top: 57.1429%;"></div>
+    <div class="board" style="left: 14.2857%; top: 42.8571%;"></div>
+    <div class="board" style="left: 14.2857%; top: 28.5714%;"></div>
+    <div class="board" style="left: 14.2857%; top: 14.2857%;"></div>
+    <div class="board" style="left: 28.5714%; top: 85.7143%;"></div>
+    <div class="board" style="left: 28.5714%; top: 71.4286%;"></div>
+    <div class="board" style="left: 28.5714%; top: 57.1429%;"></div>
+    <div class="board" style="left: 28.5714%; top: 42.8571%;"></div>
+    <div class="board" style="left: 28.5714%; top: 28.5714%;"></div>
+    <div class="board" style="left: 28.5714%; top: 14.2857%;"></div>
+    <div class="board" style="left: 42.8571%; top: 85.7143%;"></div>
+    <div class="board" style="left: 42.8571%; top: 71.4286%;"></div>
+    <div class="board" style="left: 42.8571%; top: 57.1429%;"></div>
+    <div class="board" style="left: 42.8571%; top: 42.8571%;"></div>
+    <div class="board" style="left: 42.8571%; top: 28.5714%;"></div>
+    <div class="board" style="left: 42.8571%; top: 14.2857%;"></div>
+    <div class="board" style="left: 57.1429%; top: 85.7143%;"></div>
+    <div class="board" style="left: 57.1429%; top: 71.4286%;"></div>
+    <div class="board" style="left: 57.1429%; top: 57.1429%;"></div>
+    <div class="board" style="left: 57.1429%; top: 42.8571%;"></div>
+    <div class="board" style="left: 57.1429%; top: 28.5714%;"></div>
+    <div class="board" style="left: 57.1429%; top: 14.2857%;"></div>
+    <div class="board" style="left: 71.4286%; top: 85.7143%;"></div>
+    <div class="board" style="left: 71.4286%; top: 71.4286%;"></div>
+    <div class="board" style="left: 71.4286%; top: 57.1429%;"></div>
+    <div class="board" style="left: 71.4286%; top: 42.8571%;"></div>
+    <div class="board" style="left: 71.4286%; top: 28.5714%;"></div>
+    <div class="board" style="left: 71.4286%; top: 14.2857%;"></div>
+    <div class="board" style="left: 85.7143%; top: 85.7143%;"></div>
+    <div class="board" style="left: 85.7143%; top: 71.4286%;"></div>
+    <div class="board" style="left: 85.7143%; top: 57.1429%;"></div>
+    <div class="board" style="left: 85.7143%; top: 42.8571%;"></div>
+    <div class="board" style="left: 85.7143%; top: 28.5714%;"></div>
+    <div class="board" style="left: 85.7143%; top: 14.2857%;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+    <div class="player1" style="display: None;"></div>
+    <div class="player2" style="display: None;"></div>
+  </div>
+</div>
+</body>
+</html>
