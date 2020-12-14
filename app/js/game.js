@@ -15,7 +15,6 @@ let $player1 = document.getElementsByClassName("player1");
 let player1Length = $player1.length;
 let $player2 = document.getElementsByClassName("player2");
 let player2Length = $player2.length;
-let devBoard = document.getElementById('board')
 
 const topPercents = [
     "14.2857%",  // top 0
@@ -36,9 +35,18 @@ const leftPercents = [
     "85.7143%"  // left 6
 ]
 
-//↓ボタンを押すとピースを落とす関数
+// ↓ボタンを押すとピースを落とす関数
 function dropPiece(col){
     let playerStyle = getCurrentPlayer();
+    if (playerStyle === $player1) {
+        userMove(playerStyle, col);
+    }else{
+        userMove(playerStyle, col);
+    }
+}
+
+function userMove(playerStyle, col){
+    // the move of user
     playerStyle.style = "";
     playerStyle.style.left = leftPercents[col];
 
@@ -67,22 +75,38 @@ function dropPiece(col){
     }
 
     // 勝利確認
-    checkWinner();
+    let winnerFlg = checkWinner();
 
     // 次プレイヤーへ切替
-    removeClass()
-    if (playerStyle.className === "player1"){
-        document.getElementById("player1").className = "player you inactive";
-        document.getElementById("player2").className = "player ai active";
-    }else{
-        document.getElementById("player1").className = "player you active";
-        document.getElementById("player2").className = "player ai inactive";
+    if (winnerFlg === 0) {
+        removeClass()
+        if (playerStyle.className === "player1"){
+            document.getElementById("player1").className = "player you inactive";
+            document.getElementById("player2").className = "player ai active";
+        }else{
+            document.getElementById("player1").className = "player you active";
+            document.getElementById("player2").className = "player ai inactive";
+        }
     }
 
     moves++;
+    return;
 }
 
-// How many existing pieces are there in the maxCol?
+function aiMove(){
+    // the move of AI
+    // input: boards (Current game status)
+    // ex. [[0, 1, 0, 0, 0, 2, 0],
+    //      [0, 2, 1, 0, 1, 2, 1],
+    //      ...](6 × 7)
+    // 1: piece of player1 / 2: piece of player2 / 0: none piece
+    // process:
+    // calculate the position (col) where the piece should be inserted to win,
+    // put on javascript:dropPiece(col)
+    return;
+}
+
+// How many existing pieces are there in the col?
 function getNumPieces(col){
     let npieces = 0;
     for (let i = 0; i < maxRow; i++){
@@ -112,7 +136,7 @@ function getCurrentPlayer (){
     return cPlayerStyle
 }
 
-// クラスを消去
+// プレイヤーのクラスを消去
 function removeClass(){
     document.getElementById("player1").className = "";
     document.getElementById("player2").className = "";
@@ -125,10 +149,9 @@ function checkWinner(){
     verticalFlg = verticalCheck();
     diagonalFlg = diagonalCheck();
     if (horizontalFlg[0] !== 0){
-        popupImage()
+        popupImage(horizontalFlg[0]);
         let row = horizontalFlg[1];
         let col = horizontalFlg[2];
-//        alert("player" + horizontalFlg[0] + " wins!!");
         function flashPieces(){
             for (i = 0; i < moves; i++){
                 let player = $("div[class='player"+horizontalFlg[0]+"']")[i]
@@ -146,10 +169,9 @@ function checkWinner(){
         setTimeout(flashPieces, 500);
         return horizontalFlg;
     }else if (verticalFlg[0] !== 0){
-        popupImage()
+        popupImage(verticalFlg[0]);
         let row = verticalFlg[1];
         let col = verticalFlg[2];
-//        alert("player" + verticalFlg[0] + " wins!!");
         function flashPieces(){
             for (i = 0; i < moves; i++){
                 let player = $("div[class='player"+verticalFlg[0]+"']")[i]
@@ -167,10 +189,9 @@ function checkWinner(){
         setTimeout(flashPieces, 500);
         return verticalFlg;
     }else if (diagonalFlg[0] !== 0){
-        popupImage()
+        popupImage(diagonalFlg[0]);
         let row = diagonalFlg[1];
         let col = diagonalFlg[2];
-//        alert("player" + diagonalFlg[0] + " wins!!");
         function flashPieces(){
             for (i = 0; i < moves; i++){
                 let player = $("div[class='player"+diagonalFlg[0]+"']")[i]
@@ -305,9 +326,11 @@ function back(){
     boards[lastMove[0]][lastMove[1]] = 0;
 }
 
-function popupImage() {
+// if the match is finished, popup image is showed.
+function popupImage(winnerFlg) {
     var popup = document.getElementById('js-popup');
     if(!popup) return;
+    $("#winner-popup").text("player"+winnerFlg+" wins!!");
     popup.classList.add('is-show');
 
     let blackBg = document.getElementById('js-black-bg');

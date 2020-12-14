@@ -59,18 +59,17 @@ div {
     }
     #board {
       left:0;
-      top: 75%;
+      top: 40%;
       width: 100%;
       height: 66.6666666667%;
     }
     #title {left:0%;top:0%; width:50%; height:20%;}
-    #player_div {left:0%; top:30%; width:50%; height:40%;}
-    #player1 {top:20%;}
-    #player2 {top:140%;}
+    #player_div {left:10%; top:20%; width:50%; height:40%;}
+    #player1 {top:5%;}
+    #player2 {top:55%;}
     #button_div {
         left:0%;
-        top:130%;
-        width:50%;
+        top:50%;
         height:80%;
         width: 100%;
     }
@@ -200,18 +199,18 @@ a.btn-rounded {
     border-radius: 50%;
     background: #fcfff4;
     background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#fcfff4),
-    color-stop(40%, #dfe5d7),
-    to(#b3bead)
+        linear,
+        left top,
+        left bottom,
+        from(#fcfff4),
+        color-stop(40%, #dfe5d7),
+        to(#b3bead)
     );
     background: -webkit-linear-gradient(
-    top,
-    #fcfff4 0%,
-    #dfe5d7 40%,
-    #b3bead 100%
+        top,
+        #fcfff4 0%,
+        #dfe5d7 40%,
+        #b3bead 100%
     );
     background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
     -webkit-box-shadow: inset 5px 30px 20px rgba(255, 255, 255, 0.5),
